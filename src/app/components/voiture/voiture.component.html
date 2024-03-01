@@ -1,0 +1,9 @@
+<div class="my-3">
+  <ul class="d-flex justify-content-center align-items-center gap-4">
+    <div *ngFor="let voiture of voitures" class="d-flex flex-column gap-4">
+      <li>Nom : {{voiture.nom}}</li>
+      <li><img src="{{voiture.image}}" alt="{{voiture.nom}}"></li>
+      <li><button  [routerLink]="['voiture/detail/',voiture.id]"  class="btn btn-dark">Info suplémentaire</button></li>
+    </div>
+  </ul>
+</div>

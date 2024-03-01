@@ -1,0 +1,25 @@
+<div>
+  <button [routerLink]="['/admin/add']">Ajout d'une voiture</button>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Supp</th>
+    <th scope="col">edit</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="voitures">
+  <tr *ngFor="let voiture of voitures">
+    <th scope="row">{{voiture.id}}</th>
+    <td>{{voiture.nom}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="deleteOne(voiture.id)">Sup</button>
+    </td>
+    <td>
+      <button class="btn btn-warning" [routerLink]="['/admin/edit/',voiture.id]" >Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

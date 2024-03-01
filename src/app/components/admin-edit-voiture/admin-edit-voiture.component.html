@@ -1,0 +1,39 @@
+<div class="example-container">
+  <h1>Edit de la Voiture</h1>
+  <form *ngIf="voiture" (ngSubmit)="submitForm(voiture)" action="" class="d-flex flex-column container" #formMusique="ngForm">
+
+    <mat-form-field>
+      <mat-label>nom</mat-label>
+      <input name="nom" #nom="ngModel" matInput placeholder="Title" [(ngModel)]="voiture.nom" required>
+      <mat-error *ngIf="!nom.valid">Veuiller entrer un nom</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>prix</mat-label>
+      <input name="prix" #prix="ngModel" matInput placeholder="prix" [(ngModel)]="voiture.prix" required>
+      <mat-error *ngIf="!prix.valid">Veuiller entrer un prix</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>nbKm</mat-label>
+      <input name="nbKm" #nbKm="ngModel" matInput placeholder="nbKm" [(ngModel)]="voiture.nbKm" required >
+      <mat-error *ngIf="!nbKm.valid">Veuiller entrer un urlYoutube</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Marques</mat-label>
+      <mat-select name="cat" [(ngModel)]="voiture.marque" placeholder="Catégorie Parente">
+        <ng-container *ngFor="let marque of marques">
+          <mat-option [value]="'/api/marques/'+ marque.id">{{marque.nom}}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>image</mat-label>
+      <input name="image" #image="ngModel" matInput placeholder="image" [(ngModel)]="voiture.image" required>
+      <mat-error *ngIf="!image.valid">Veuiller entrer un image</mat-error>
+    </mat-form-field>
+
+    <button [disabled]="!formMusique.valid" type="submit">Soummetre</button>
+  </form>
+</div>

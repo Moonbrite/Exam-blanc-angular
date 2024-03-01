@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Se connecter</h2>
+  <form (ngSubmit)="connectUser()" #loginform="ngForm" action="" class="d-flex flex-column container">
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input #username="ngModel" name="username" matInput placeholder="Email" [(ngModel)]="authRequest.username"  required>
+      <mat-error *ngIf="!username.valid" >Veuiller entrer un userName</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input #password="ngModel" name="password" matInput placeholder="Password" [(ngModel)]="authRequest.password"  required>
+      <mat-error *ngIf="!password.valid" >Veuiller entrer un email</mat-error>
+    </mat-form-field>
+
+    <div *ngIf="error">
+      <p class="text-danger">Invalid credentials</p>
+      {{error}}
+    </div>
+
+    <button id="btn-connect" [disabled]="!loginform.valid" class="btn btn-success" type="submit">Soummetre</button>
+
+  </form>
+</div>
